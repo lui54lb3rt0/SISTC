@@ -1,0 +1,20 @@
+  <?
+           "SELECT * FROM `utilizadores`";
+                            $rs   = mysql_query($query);
+
+                            while($campo = mysql_fetch_array($rs)){
+                                $id			= $campo['id'];
+                                $userid		= $campo['uid'];
+                                $username	= $campo['nome'];
+                                $userdesc	= $campo['color']; ?>
+
+                                    <div class="alert-dismissable <?=$id?>">
+                                        <button type="button" class="close" name="u" id="<?=$id?>" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        <h4><i class="fa fa-user"></i> <?=$username?></h4>
+                                        <h5><?if($userid==1) {echo"Administrador";}if($userid==2) {echo"Utilizador";}?></h5>
+                                        <div class="external-event" style="color:white;background-color:<?=$campo['color']?>;"></div>
+                                    </div>
+
+        <?                      
+                            }
+        ?>
